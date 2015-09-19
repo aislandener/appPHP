@@ -5,7 +5,7 @@
  ?>
 
 	 <form action="/appPHP/comparar.php" method="GET">
-		<table>
+		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
 					<th>Marca</th>
@@ -20,7 +20,7 @@
 				<tr>
 					<td><?php echo $carro['marca'] ?></td>
 					<td><?php echo $carro['modelo'] ?></td>
-					<td><?php echo $carro['motor'] ?></td>
+					<td><?php echo number_format($carro['motor'],1,".",",") ?></td>
 					<td><?php echo $carro['ano'] ?></td>
 					<td>
 						<input type="checkbox" id="car<?php echo $carro['id']?>" />
@@ -29,7 +29,7 @@
 			<?php endforeach ?>
 			</tbody>
 		</table>
-		<input type="button" id="submeter" value="Comparar" />
+		<input type="button" id="submeter" value="Comparar" class="btn btn-primary" />
 	</form>
 	<script type="text/javascript">
 		var carro1,carro2;

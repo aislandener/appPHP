@@ -9,19 +9,19 @@
 	$carro2 = $car2['marca']." ".$car2['modelo']." ".$car2['motor']." ".$car2['ano'];
 
  ?>
-	<table>
+	<table class="table table-striped table-hover">
 		<thead>
 			<tr>
 				<th>Modelo</th>
-				<th id="modelo1"><?php echo $carro1; ?></th>
+				<th><?php echo $carro1; ?></th>
 				<th><?php echo $carro2; ?></th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
+			<tr class="">
 				<td>Preço</td>
-				<td id="preco1"><?php echo $car1['preco']; ?></td>
-				<td id="preco2"><?php echo $car2['preco']; ?></td>
+				<td id="preco1">R$ <?php echo number_format($car1['preco'],2,",","."); ?></td>
+				<td id="preco2">R$ <?php echo number_format($car2['preco'],2,",","."); ?></td>
 			</tr>
 			<tr>
 				<td>Cavalo(HP)</td>
@@ -30,23 +30,23 @@
 			</tr>
 			<tr>
 				<td>Consumo Etanol(Km/l)</td>
-				<td id="conEtanol1"><?php echo $car1['conEtanol']; ?></td>
-				<td id="conEtanol2"><?php echo $car2['conEtanol'];?></td>
+				<td id="conEtanol1"><?php echo number_format($car1['conEtanol'],3,",","."); ?></td>
+				<td id="conEtanol2"><?php echo number_format($car2['conEtanol'],3,",",".");?></td>
 			</tr>
 			<tr>
 				<td>Consumo Gasolina(Km/l)</td>
-				<td id="conGasolina1"><?php echo $car1['conGasolina'];?></td>
-				<td id="conGasolina2"><?php echo $car2['conGasolina']; ?></td>
+				<td id="conGasolina1"><?php echo number_format($car1['conGasolina'],3,",",".");?></td>
+				<td id="conGasolina2"><?php echo number_format($car2['conGasolina'],3,",","."); ?></td>
 			</tr>
 			<tr>
 				<td>Valor Médio Revisões</td>
-				<td id="vlrRevisao1"><?php echo $car1['vlrResivao']; ?></td>
-				<td id="vlrRevisao2"><?php echo $car2['vlrResivao']; ?></td>
+				<td id="vlrRevisao1">R$ <?php echo number_format($car1['vlrRevisao'],2,",","."); ?></td>
+				<td id="vlrRevisao2">R$ <?php echo number_format($car2['vlrRevisao'],2,",","."); ?></td>
 			</tr>
 			<tr>
 				<td>Valor Médio Seguro</td>
-				<td id="vlrSeguro1"><?php echo $car1['vlrSeguro']; ?></td>
-				<td id="vlrSeguro2"><?php echo $car2['vlrSeguro']; ?></td>
+				<td id="vlrSeguro1">R$  <?php echo number_format($car1['vlrSeguro'],2,",","."); ?></td>
+				<td id="vlrSeguro2">R$ <?php echo number_format($car2['vlrSeguro'],2,",","."); ?></td>
 			</tr>
 
 			<tr>
@@ -60,7 +60,7 @@
 		$(function($){
 				var ponto1 = 0;
 				var ponto2 = 0;
-				if($("#preco1").html() <= $("#preco2").html()){
+				if(<?php echo $car1['preco'].'<'. $car2['preco']; ?>){
 					$("#preco1").addClass("melhor");
 					$("#preco2").addClass("pior");
 					ponto1++;
@@ -71,7 +71,7 @@
 				}
 
 
-				if($("#cavalo1").html() >= $("#cavalo2").html()){
+				if(<?php echo $car1['cavalo'].'>'. $car2['cavalo']; ?>){
 					$("#cavalo1").addClass("melhor");
 					$("#cavalo2").addClass("pior");
 					ponto1++;
@@ -82,7 +82,7 @@
 				}
 
 
-				if($("#conEtanol1").html() <= $("#conEtanol2").html()){
+				if(<?php echo $car1['conEtanol'].'>'. $car2['conEtanol']; ?>){
 					$("#conEtanol1").addClass("melhor");
 					$("#conEtanol2").addClass("pior");
 					ponto1++;
@@ -93,7 +93,7 @@
 				}
 
 
-				if($("#conGasolina1").html() >= $("#conGasolina2").html()){
+				if(<?php echo $car1['conGasolina'].'>'. $car2['conGasolina']; ?>){
 					$("#conGasolina1").addClass("melhor");
 					$("#conGasolina2").addClass("pior");
 					ponto1++;
@@ -104,7 +104,7 @@
 				}
 
 
-				if($("#vlrRevisao1").html() >= $("#vlrRevisao2").html()){
+				if(<?php echo $car1['vlrRevisao']." < " . $car2['vlrRevisao']; ?>){
 					$("#vlrRevisao1").addClass("melhor");
 					$("#vlrRevisao2").addClass("pior");
 					ponto1++;
@@ -114,8 +114,7 @@
 					ponto2++;
 				}
 
-
-				if($("#vlrSeguro1").html() >= $("#vlrSeguro2").html()){
+				if(<?php echo $car1['vlrSeguro']." < ".$car2['vlrSeguro']; ?>){
 					$("#vlrSeguro1").addClass("melhor");
 					$("#vlrSeguro2").addClass("pior");
 					ponto1++;

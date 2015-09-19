@@ -1,8 +1,10 @@
 .melhor{
-	color: green;
-	background-color: blue;
+	color: #00FF00;
 }
 .pior{
-	color:red;
-	background-color: yellow;
+	color:#FF0000;
+}
+.corpo{
+	padding: 20px;
+	margin: 20px;
 }

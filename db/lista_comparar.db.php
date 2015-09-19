@@ -13,7 +13,7 @@
 
 			mysqli_stmt_execute($stmt);
 
-			mysqli_stmt_bind_result($stmt,$ID,$MARCA,$MODELO,$MOTOR,$ANO,$PRECO,$CAVALO,$CONETANOL,$CONGASOLINA,$VLRRESIVAO,$VLRSEGURO);
+			mysqli_stmt_bind_result($stmt,$ID,$MARCA,$MODELO,$MOTOR,$ANO,$PRECO,$CAVALO,$CONETANOL,$CONGASOLINA,$VLRREVISAO,$VLRSEGURO);
 
 			$car = array();
 			while(mysqli_stmt_fetch($stmt)){
@@ -26,7 +26,7 @@
 				$car['cavalo'] = $CAVALO;
 				$car['conEtanol'] = $CONETANOL;
 				$car['conGasolina'] = $CONGASOLINA;
-				$car['vlrResivao'] = $VLRRESIVAO;
+				$car['vlrRevisao'] = $VLRREVISAO;
 				$car['vlrSeguro'] = $VLRSEGURO;
 			}
 			return $car;
